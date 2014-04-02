@@ -1,4 +1,6 @@
 <?php
+echo 'hey';
+
 function getDom($path) {
   //$tidy = tidy_parse_file($path, 'utf8');
   //echo $path;
