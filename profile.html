@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="Expires" content="0" />
+        <meta name="author" content="VIC-OV, Ing. Petr Karel" />
+        <meta name="description" content="SSU - soustředěná správa uživatelů (tzv. usermap) je systém, který slouží pro autentizaci a autorizaci uživatelů IS ČVUT a pro celouniverzitní evidenci kontaktních údajů." />
+        <base href="https://usermap.cvut.cz/" />
+        <title>Ing. Michal Valenta, Ph.D. | Uživatelský profil | Usermap ČVUT</title>
+        <link rel="shortcut icon" href="/favicon.ico;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1" />
+        <link rel=stylesheet type="text/css" href="/css/style.css;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1" />
+        <link rel=stylesheet type="text/css" href="/css/dt.css;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1" />
+        <link rel=stylesheet type="text/css" href="/css/jquery-ui-1.8.9.custom.css;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1" />
+        <script type="text/javascript" src="/js/jquery-1.4.4.min.js;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1"></script>
+        <script type="text/javascript" src="/js/common.js;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1"></script>
+        <script type="text/javascript">
+            $(function() {
+                $("#profile tbody td").not($(".dt .not-highlight")).click(function() {
+                    var uid = $(this).parents('tr').attr('id');
+                    $(this).parents('tr').removeClass('highlight');
+                    open('/profile/' + uid +  '/', '_self');
+                });
+            });
+        </script>
+
+        <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-6923369-6']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        </head>
+
+    <body lang="cs">
+        <div id="page">
+            <div id="header">
+    <div id="title">USERMAP</div>
+    <div id="menu-line">
+        <ul>
+            <li class="first active"><a href="/search/;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1">Lidé na ČVUT</a></li>
+            <li class=""><a href="/search/department/;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1">Pracoviště</a></li>
+            <li class=""><a href="/search/room/;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1">Místnosti</a></li>
+            </ul>
+    </div>
+    <div id="lang"><a href="/profile/valenta/?lang=cs"><img src="img/flag_cz.jpg" /></a> <a href="/profile/valenta/?lang=en"><img src="img/flag_en.jpg" /></a></div>
+    <div id="user">
+        <a id="login-href" href="/login/;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1">Přihlásit se</a>
+        </div>
+    <div class="clearfix"></div>
+    </div>
+
+<div id="lgn-frm-top" class="rounded" style="display: none;">
+    <div id="inner">
+        <div class="a-right"><img src="img/close.gif" id="cls-btn" alt="Close button" style="cursor: pointer;" /></div>
+        <form method="POST" action="/login/j_security_check;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1" accept-charset="UTF-8">
+            <input type="hidden" name="spring-security-redirect" value="/profile/valenta/"/>
+            <label for="j_username">Uživatelské jméno:</label>
+            <input type="text" id="j_username" name="j_username" value="" />
+            <br />
+            <label for="j_password">Přístupové heslo:</label>
+            <input type="password" id="j_password" name="j_password" />
+            <div class="btns">
+                <input type="submit" class="button" value="Přihlásit se">
+            </div>
+        </form>
+    </div>
+</div>
+<div id="content">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="prf-template">
+    <table style="width: 100%;" cellpadding="0" cellspacing="0">
+        <tr>
+            <td id="photo-col">
+                <div id="portrait">
+                    <div id="ph" style="width: 100%; height: 100%; background: url(/photos/valenta;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1?type=jpg) no-repeat center;" />
+                </div>
+                <div id="link">
+                    <img alt="vcard" src="/img/contact.png;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1" style="vertical-align: text-bottom;" /> <a href="/profile/valenta;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1?vcf">uložit jako vizitku</a><br/>
+                    <img alt="email" src="/img/mail.png;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1" style="vertical-align: text-bottom;" /> <a href="mailto:michal.valenta@fit.cvut.cz">poslat e-mail</a>
+                </div>
+            </td>
+            <td id="data-col">
+                <div id="name">Ing. Michal Valenta, Ph.D.</div>
+                <div id="menu">
+                    <div class="list-tab-container">
+                        <ul class="list-tabs">
+                            <li class="first">
+                                <a class="first current" href="/profile/valenta/;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1"><span>Profil uživatele</span></a>
+                            </li>
+                            
+                        </ul>
+                        <div class="list-tabs-end"><span></span></div>
+                    </div>
+                </div>
+                <div id="prf">
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#prf table tbody td").not($(".dt .not-highlight")).hover(function() {
+            $(this).parents('tr').addClass('highlight');
+        }, function() {
+            $(this).parents('tr').removeClass('highlight');
+        });
+    });
+</script>
+
+
+
+    <div class="title"><span>Kontaktní údaje</span></div>
+
+<table class="info-table">
+    <tbody>
+        
+            <tr>
+                <td class="label">Pracoviště:</td>
+                <td>
+                    
+                        <a href="/search/department/18102/;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1">
+                            Fakulta informačních technologií / katedry / katedra softwarového inženýrství
+                            </a>
+                        <br>
+                    
+                        <a href="/search/department/81311/;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1">
+                            Výpočetní a informační centrum / oddělení studijního IS
+                            </a>
+                        <br>
+                    
+                        
+                            jiný pracovní poměr
+                            
+                        <br>
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td class="label">Místnost:</td>
+                <td>
+                    
+                        <a href="/search/room/276/;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1">
+                            FIT / Thákurova 7, 166 29 Praha 6 / A-924
+                        </a>
+                        <br>
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td class="label">Telefon:</td>
+                <td>
+                    
+                        +420-22435-9860 (telefon)<br>
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td class="label">Pozice na ČVUT:</td>
+                <td>
+                    
+                        vedoucí - katedra softwarového inženýrství - Fakulta informačních technologií<br>
+                    
+                        člen grémia - Fakulta informačních technologií<br>
+                    
+                </td>
+            </tr>
+        
+        
+        
+            <tr>
+                <td class="label">E-mail:</td>
+                <td>
+                    
+                        <a href="mailto:michal.valenta@fit.cvut.cz">michal.valenta@fit.cvut.cz</a><br>
+                    
+                        <a href="mailto:valenta@fit.cvut.cz">valenta@fit.cvut.cz</a><br>
+                    
+                </td>
+            </tr>
+        
+    </tbody>
+</table>
+
+<div class="title"><span>Údaje o identitě</span></div>
+<table class="info-table">
+    
+        <tr>
+            <td class="label">Přihlašovací jméno:</td>
+            <td>
+                <a href="/login/;jsessionid=5AF34B4EAF7CFF159A705755EB9B38E1?u=valenta" class="username">valenta</a>
+            </td>
+        </tr>
+    
+    
+        <tr>
+            <td class="label">Osobní číslo:</td>
+            <td>32669</td>
+        </tr>
+    
+    
+        
+    
+    
+            
+    
+	
+	
+</table>
+
+
+
+
+
+
+
+                </div>
+            </td>
+        </tr>
+    </table>
+</div></div>
+            <div id="clearfix-footer"></div>
+        </div>
+        <div id="footer">
+    <div class="a-center">
+        <strong>Copyright &copy; 2011 ČVUT v Praze</strong>, provozuje ČVUT - Výpočetní a informační centrum | Hlášení chyb a námětů <a target="_blank" href="https://helpdesk.cvut.cz/jira/login.jsp?os_destination=%2Fsecure%2FCreateIssueDetails!init.jspa%3Fpid%3D10363%26issuetype%3D1%26priority%3D3">Helpdesk ČVUT</a> | Usermap 3.3-SNAPSHOT.208</div>
+</div>
+
+</body>
+
+</html>
