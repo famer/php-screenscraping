@@ -1,13 +1,8 @@
 <?php
-echo 'hey';
 error_reporting(E_ALL);
  ini_set("display_errors", 1);
 
 function getDom($path) {
-  //$tidy = tidy_parse_file($path, 'utf8');
-  //echo $path;
-  sleep(1);
-$tidy = new tidy;
   $tidy = tidy_parse_file($path, array("numeric-entities" => true, "output-xhtml" => true), 'utf8');
   $tidy->cleanRepair();
   $xhtml = (string) $tidy;
