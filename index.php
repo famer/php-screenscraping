@@ -31,7 +31,7 @@ $timematrix = array(
 	);
 
 $url = 'https://usermap.cvut.cz/profile/valenta/';
-$url = 'profile.html';//'https://usermap.cvut.cz/profile/valenta/';
+$url = 'profile.html';//'https://usermap.cvut.cz/profile/'.?_GET['username'];
 
 $Dom = getDom($url);
 $phone  = $Dom->xpath('//xhtml:div[@id="prf"]/xhtml:table[1]/xhtml:tbody/xhtml:tr[3]/xhtml:td[2]');
