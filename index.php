@@ -3,9 +3,11 @@ error_reporting(E_ALL);
  ini_set("display_errors", 1);
 
 function getDom($path) {
+	$tidy = new Tidy;
   $tidy = tidy_parse_file($path, array("numeric-entities" => true, "output-xhtml" => true), 'utf8');
   $tidy->cleanRepair();
   $xhtml = (string) $tidy;
+  $xhtml = file_get_contents($path);
   $dom = simplexml_load_string($xhtml);
   $dom->registerXPathNamespace("xhtml", "http://www.w3.org/1999/xhtml");
   return $dom;
@@ -29,6 +31,21 @@ $timematrix = array(
 	'20:30'
 
 	);
+
+if (!$_GET['q']) {
+	echo '<form><input type="text" name="q" /><input type="submit" /></form>';
+}
+$_GET['q'] = 'valenta';
+if ($_GET['q']) {
+
+	$url = "https://usermap.cvut.cz/search/?js=true&attrs=exchPersonalId&format=HTML&query=" . $_GET['q'];
+	$Dom = getDom($url);
+	$xPath = '//xhtml:*[@id="profile"]/xhtml:tbody/xhtml:tr';
+	$tr = $Dom->xpath($xPath);
+	echo $tr;
+	print_r($tr);
+}
+exit;
 
 $url = 'https://usermap.cvut.cz/profile/valenta/';
 $url = 'profile.html';//'https://usermap.cvut.cz/profile/'.?_GET['username'];
