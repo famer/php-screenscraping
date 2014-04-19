@@ -39,6 +39,7 @@ function printElements($elements) {
 if (!$_GET['q']) {
 	echo '<form><input type="text" name="q" /><input type="submit" /></form>';
 }
+if (PHP_SAPI == 'cli') $_GET['q'] = 'valenta';
 if ($_GET['q']) {
 
 	$url = "https://usermap.cvut.cz/search/?js=true&attrs=exchPersonalId&format=HTML&query=" . $_GET['q'];
@@ -46,7 +47,10 @@ if ($_GET['q']) {
 	$xPath = '//table[@id="profile"]/tbody/tr';
 	$tr = $Dom->query($xPath);
 	print_r($tr);
-	printElements($tr);
+		foreach ($tr as $element) {
+			echo sprintf('<a href="/?username=%s">%s</a><br />', $element->getAttribute('id'),  $element->getElementsByTagName('td')->item(0)->nodeValue);
+		}
+	//printElements($tr);
 }
 exit;
 
