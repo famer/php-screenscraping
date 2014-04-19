@@ -49,7 +49,7 @@ function printElements($elements) {
 }
 
 if (!$_GET['q']) {
-	echo '<form><input type="text" name="q" /><input type="submit" /></form>';
+	echo '<form><input type="text" value="'.$_GET['username'].'" name="q" /><input type="submit" /></form>';
 }
 if (PHP_SAPI == 'cli') $_GET['q'] = 'valenta';
 if ($_GET['q']) {
