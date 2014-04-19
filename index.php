@@ -1,6 +1,7 @@
 <?php
 //error_reporting(E_ALL);
  //ini_set("display_errors", 1);
+define ('PHP_EOL', '<br />');
 
 function getDom($path) {
 	$cred = sprintf('Authorization: Basic %s', base64_encode('tatartim:raFxegFj2TyV') );
