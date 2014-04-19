@@ -74,11 +74,11 @@ $phone  = $Dom->query('//div[@id="prf"]/table[1]/tbody/tr[3]/td[2]')->item(0)->n
 $room = $Dom->query('//div[@id="prf"]/table[1]/tbody/tr[2]/td[2]/a')->item(0)->nodeValue;
 $number = $Dom->query('//div[@id="prf"]/table[2]/tr[2]/td[2]')->item(0)->nodeValue;
 $email = $Dom->query('//div[@id="prf"]/table[1]/tbody/tr[5]/td[2]/a[1]')->item(0)->nodeValue;
-echo 'Contacts:', "\n";
-echo $phone, "\n";
-echo $room, "\n";
-echo $email, "\n";
-//echo $number, "\n";
+echo 'Contacts:', PHP_EOL;
+echo $phone, PHP_EOL;
+echo $room, PHP_EOL;
+echo $email, PHP_EOL;
+//echo $number, PHP_EOL;
 $url = 'schedule.html';
 $url = 'https://timetable.fit.cvut.cz/public/en/ucitele/'.
 substr($number, 0, 2).'/'.
@@ -86,25 +86,25 @@ substr($number, 2, 2).'/u'.$number.'000.html';
 
 
 $Dom = getDom($url);
-$dayNumber = 1;//date('N');
+$dayNumber = @date('N');
 if ( $dayNumber > 5 ) {
 	echo 'Today is not working day';
 	exit;
 }
 $rooms = $Dom->query('//div[@id="content"]/table/tbody/tr['.$dayNumber.']/td');
 echo 'Today at:', "\n";
-if ( is_null($rooms) ) {
-	echo 'Today not in university';
-	exit;
-}
-
 $colspanSum = 0;
 foreach ($rooms as $key => $room) {
 	if ( $key == 0 ) continue;
 	$span = $room->getAttribute('colspan');
 	if ($room->getElementsByTagName('a')->item(1)->nodeValue) {
 		echo $room->getElementsByTagName('a')->item(1)->nodeValue, ' ', $timematrix[$colspanSum], '-', $timematrix[$colspanSum+$span], "\n";
+		$notAbsent = true;
 	}
 	$colspanSum += $span;
 }
-//echo $rooms[0];
+if ( is_null($notAbsent) ) {
+	echo 'Today not in university';
+	exit;
+}
+
