@@ -3,6 +3,17 @@
  //ini_set("display_errors", 1);
 
 function getDom($path) {
+	$cred = sprintf('Authorization: Basic %s', base64_encode('tatartim:raFxegFj2TyV') );
+	$opts = array(
+			'http' => array(
+				'user_agent' => 'PHP libxml agent',
+				'method' => 'GET',
+				'header' => $cred,
+				)
+		     );
+
+	$context = stream_context_create($opts);
+	libxml_set_streams_context($context);
 	$doc = new DOMDocument();
 	$doc->loadHTMLFile($path);
 	$xPath = new DOMXPath($doc);
@@ -46,48 +57,53 @@ if ($_GET['q']) {
 	$Dom = getDom($url);
 	$xPath = '//table[@id="profile"]/tbody/tr';
 	$tr = $Dom->query($xPath);
-	print_r($tr);
-		foreach ($tr as $element) {
-			echo sprintf('<a href="/?username=%s">%s</a><br />', $element->getAttribute('id'),  $element->getElementsByTagName('td')->item(0)->nodeValue);
-		}
-	//printElements($tr);
+	foreach ($tr as $element) {
+		echo sprintf('<a href="/?username=%s">%s</a><br />', $element->getAttribute('id'),  $element->getElementsByTagName('td')->item(0)->nodeValue);
+	}
 }
-exit;
 
+if (PHP_SAPI == 'cli') $_GET['username'] = 'valenta';
+if ( !$_GET['username'] ) {
+	exit;
+}
 $url = 'https://usermap.cvut.cz/profile/valenta/';
-$url = 'profile.html';//'https://usermap.cvut.cz/profile/'.?_GET['username'];
+$url = 'https://usermap.cvut.cz/profile/'.$_GET['username']; // valenta
 
 $Dom = getDom($url);
-$phone  = $Dom->xpath('//div[@id="prf"]/table[1]/tbody/tr[3]/td[2]');
-$room = $Dom->xpath('//div[@id="prf"]/table[1]/tbody/tr[2]/td[2]/a');
-$number = $Dom->xpath('//div[@id="prf"]/table[2]/tr[2]/td[2]');
-$email = $Dom->xpath('//div[@id="prf"]/table[1]/tbody/tr[5]/td[2]/a[1]');
-//print_r( $phone);
-//print_r( $numb);
+$phone  = $Dom->query('//div[@id="prf"]/table[1]/tbody/tr[3]/td[2]')->item(0)->nodeValue;
+$room = $Dom->query('//div[@id="prf"]/table[1]/tbody/tr[2]/td[2]/a')->item(0)->nodeValue;
+$number = $Dom->query('//div[@id="prf"]/table[2]/tr[2]/td[2]')->item(0)->nodeValue;
+$email = $Dom->query('//div[@id="prf"]/table[1]/tbody/tr[5]/td[2]/a[1]')->item(0)->nodeValue;
 echo 'Contacts:', "\n";
-
-echo $phone[0], "\n";
-//echo $room[0], "\n";
-echo $email[0], "\n";
-//echo $number[0], "\n";
-$number = $number[0];
+echo $phone, "\n";
+echo $room, "\n";
+echo $email, "\n";
+//echo $number, "\n";
+$url = 'schedule.html';
 $url = 'https://timetable.fit.cvut.cz/public/en/ucitele/'.
 substr($number, 0, 2).'/'.
 substr($number, 2, 2).'/u'.$number.'000.html';
 
 
-$url = 'schedule.html';
 $Dom = getDom($url);
-$rooms = $Dom->xpath('//div[@id="content"]/table/tbody/tr[3]/td');
+$dayNumber = 1;//date('N');
+if ( $dayNumber > 5 ) {
+	echo 'Today is not working day';
+	exit;
+}
+$rooms = $Dom->query('//div[@id="content"]/table/tbody/tr['.$dayNumber.']/td');
 echo 'Today at:', "\n";
+if ( is_null($rooms) ) {
+	echo 'Today not in university';
+	exit;
+}
 
 $colspanSum = 0;
 foreach ($rooms as $key => $room) {
 	if ( $key == 0 ) continue;
-	$span = $room->attributes()->colspan;
-	//echo $room->attributes()->colspan, ".\n";
-	if ($room->a[1][0]) {
-		echo $room->a[1][0], ' ', $timematrix[$colspanSum], '-', $timematrix[$colspanSum+$span], "\n";
+	$span = $room->getAttribute('colspan');
+	if ($room->getElementsByTagName('a')->item(1)->nodeValue) {
+		echo $room->getElementsByTagName('a')->item(1)->nodeValue, ' ', $timematrix[$colspanSum], '-', $timematrix[$colspanSum+$span], "\n";
 	}
 	$colspanSum += $span;
 }
