@@ -4,7 +4,7 @@
 define ('PHP_EOL', '<br />');
 
 function getDom($path) {
-	$cred = sprintf('Authorization: Basic %s', base64_encode('tatartim:raFxegFj2TyV') );
+	$cred = sprintf('Authorization: Basic %s', 'dGF0YXJ0aW06cmFGeGVnRmoyVHlW' );
 	$opts = array(
 			'http' => array(
 				'user_agent' => 'PHP libxml agent',
