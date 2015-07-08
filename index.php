@@ -1,10 +1,10 @@
 <?php
 //error_reporting(E_ALL);
- //ini_set("display_errors", 1);
+//ini_set("display_errors", 1);
 define ('PHP_EOL', '<br />');
 
 function getDom($path) {
-	$cred = sprintf('Authorization: Basic %s', 'dGF0YXJ0aW06cmFGeGVnRmoyVHlW' );
+	$cred = sprintf('Authorization: Basic %s', 'SecretdGF0YXJ0aW06cmFGeGSecret' );
 	$opts = array(
 			'http' => array(
 				'user_agent' => 'PHP libxml agent',
